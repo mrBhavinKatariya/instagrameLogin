@@ -39,7 +39,7 @@ function InstaLogin() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8001/api/v1/user/login",
+        "https://677ee99c9e2c801f9a6885b4--spontaneous-sprinkles-a3abd1.netlify.app",
         formData,
         {
           headers: {

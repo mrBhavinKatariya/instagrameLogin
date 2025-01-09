@@ -29,6 +29,7 @@ app.use((req, res, next) => {
 
 
 import userRouter from './routes/user.routes.js';
-app.use('/api/v1/user', userRouter)
+app.use('https://677ee99c9e2c801f9a6885b4--spontaneous-sprinkles-a3abd1.netlify.app/', userRouter)
+// app.use('/api/v1/user', userRouter)
 
 export {app}
