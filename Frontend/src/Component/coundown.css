@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    /* padding: 0; */
+    background: linear-gradient(135deg, #2c003e, #5a189a); /* Purple gradient background */
+    color: white;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    /* overflow: hidden; */
+    padding: 5px;
+    height: 100%;
+  }
+  
+  .app {
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff7f50, 0 0 20px #ffa500; /* Orange glow */
+  }
+  
+  /* Countdown Timer Container */
+  .countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Time Boxes */
+  .time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Translucent background */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: 80px;
+    height: 100px;
+  }
+  
+  .time {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ff4500; /* Neon orange */
+    text-shadow: 0 0 15px #ff4500, 0 0 30px #ff6347; /* Orange glow */
+  }
+  
+  .label {
+    font-size: 14px;
+    color: #ffb6c1; /* Soft pink */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Colon Styling */
+  .colon {
+    font-size: 50px;
+    color: #00ced1; /* Neon teal */
+    text-shadow: 0 0 15px #00ced1, 0 0 30px #20b2aa; /* Teal glow */
+    margin-top: -15px;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .time-box {
+      width: 60px;
+      height: 80px;
+    }
+  
+    .time {
+      font-size: 32px;
+    }
+  
+    .colon {
+      font-size: 40px;
+    }
+  }
+  

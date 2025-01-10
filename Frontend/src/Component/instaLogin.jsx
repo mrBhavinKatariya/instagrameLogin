@@ -39,7 +39,7 @@ function InstaLogin() {
 
     try {
       const response = await axios.post(
-        "https://677ee99c9e2c801f9a6885b4--spontaneous-sprinkles-a3abd1.netlify.app",
+        "http://localhost:8001/api/v1/user/login",
         formData,
         {
           headers: {
@@ -47,6 +47,7 @@ function InstaLogin() {
           },
         }
       );
+      
       setLoginMessage("Login successful!");
       setFormData({ username: "", password: "" });
     } catch (err) {
@@ -120,7 +121,7 @@ function InstaLogin() {
               placeholder="Username or email address"
               value={formData.username}
               onChange={handleChange}
-              className="w-[300px] h-10 border border-gray-400 rounded px-2"
+              className="w-[300px] h-10 border border-gray-400 rounded px-2  text-black"
             />
           </div>
 
@@ -131,18 +132,18 @@ function InstaLogin() {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-[300px] h-10 border border-gray-400 rounded px-2"
+              className="w-[300px] h-10 border border-gray-400 rounded px-2  text-black"
             />
           </div>
           <div className="grid justify-end pr-[50px]">
-            <span className=" h-[35px]    font-bold  text-blue-900">
+            <span className=" h-[35px]    font-bold  text-blue-700">
               Forgot password?
             </span>
           </div>
           <div className="grid justify-center mb-4">
             <button
               type="submit"
-              className="w-[300px] h-10 bg-blue-600 text-white rounded font-bold"
+              className="w-[300px] h-10 bg-blue-600 text-white rounded font-bold "
             >
               Log in
             </button>
